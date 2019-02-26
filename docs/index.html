@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>LoliDocs</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=".">LoliDocs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href=".">Home</a>
+                            </li>
+                            <li >
+                                <a href="builtins/">Built-ins</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="disabled">
+                                <a rel="next" >
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="builtins/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#welcome">Welcome</a></li>
+        <li class="main "><a href="#syntax-overview">Syntax overview</a></li>
+            <li><a href="#declarations">Declarations</a></li>
+            <li><a href="#literals">Literals</a></li>
+            <li><a href="#comments">Comments</a></li>
+            <li><a href="#escape-codes">Escape codes</a></li>
+            <li><a href="#operators">Operators</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+            <li><a href="#interpolation">Interpolation</a></li>
+            <li><a href="#if">If</a></li>
+            <li><a href="#loops">Loops</a></li>
+            <li><a href="#functions">Functions</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#exceptions">Exceptions</a></li>
+            <li><a href="#generics">Generics</a></li>
+            <li><a href="#import">Import</a></li>
+            <li><a href="#enums">Enums</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="welcome">Welcome<a class="headerlink" href="#welcome" title="Permanent link">&para;</a></h1>
+<p><strong>Loli</strong> is a embedded programming language.<br />
+<strong>Loli</strong> is statically-typed, <strong>Loli</strong> uses reference counting for memory management with garbage collection as a fallback.  </p>
+<p>Key features of <strong>Loli</strong>:<br />
+- Built-in template mode<br />
+- Embed/extend in C<br />
+- Single-inheritance classes<br />
+- Exceptions<br />
+- Generics<br />
+- Algebraic data types<br />
+- Built-in coroutines</p>
+<h1 id="syntax-overview">Syntax overview<a class="headerlink" href="#syntax-overview" title="Permanent link">&para;</a></h1>
+<h2 id="declarations">Declarations<a class="headerlink" href="#declarations" title="Permanent link">&para;</a></h2>
+<p>Variables must be declared before they are used, with the <code>var</code> keyword:  </p>
+<pre><code class="rust">var x = 5  
+var y: Double = 5.32  
+var z = [1, 2, 3], hi = &quot;Hello, world!&quot;  
+</code></pre>
+
+<p>The value used to initialize a variable determines the type of the variable.<br />
+In most cases, <code>var</code> does not need extra type information.<br />
+However, sometimes the right side of an initialization doesn't provide enough info and type information must be provided:  </p>
+<pre><code class="rust">var some_list: List[Double] = []
+</code></pre>
+
+<h2 id="literals">Literals<a class="headerlink" href="#literals" title="Permanent link">&para;</a></h2>
+<p>Loli has several predefined classes, and syntax for using them as well.  </p>
+<h3 id="boolean">Boolean<a class="headerlink" href="#boolean" title="Permanent link">&para;</a></h3>
+<p>Either <code>true</code> or <code>false</code>.  </p>
+<h3 id="byte">Byte<a class="headerlink" href="#byte" title="Permanent link">&para;</a></h3>
+<p>A numeric value from 0 to 255.<br />
+Can be declared like an <code>Integer</code> but with a suffix of <code>t</code>, or like a <code>String</code> using a single character or escape sequence between single quote marks:  </p>
+<pre><code class="rust">0t
+0xFFt
+255t
+'a'
+'\t'
+</code></pre>
+
+<h3 id="bytestring">ByteString<a class="headerlink" href="#bytestring" title="Permanent link">&para;</a></h3>
+<p>An array of <code>Byte</code> values. A <code>String</code>, but with no guarantees about embedded <code>\0</code> values or utf-8.<br />
+Allows any escape character between quotes:  </p>
+<pre><code class="rust">b&quot;123456&quot;
+b&quot;\0\1\2&quot;
+b&quot;\255\254\t&quot;
+b&quot;&quot;&quot;A \
+    multi-line \
+    ByteString&quot;&quot;&quot;
+</code></pre>
+
+<h3 id="double">Double<a class="headerlink" href="#double" title="Permanent link">&para;</a></h3>
+<pre><code class="rust">0.00000005
+-1.7
+10e1
+5e-5
+</code></pre>
+
+<h3 id="hash">Hash<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h3>
+<p>A <code>Hash</code> is a key to value mapping. Only <code>Integer</code> and <code>String</code> can be used for the key.<br />
+The value can be anything, so long as there is a consistent type.<br />
+If a <code>Hash</code> literal contains the same key twice, both values will still be computed if necessary, but the right-most key wins:  </p>
+<pre><code class="rust">var a_hash = [&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 2, &quot;c&quot; =&gt; 3]
+
+var empty_hash: Hash[String, Integer] = []
+</code></pre>
+
+<h3 id="integer">Integer<a class="headerlink" href="#integer" title="Permanent link">&para;</a></h3>
+<p>A 64-bit signed value that can be represented using different bases:  </p>
+<pre><code class="rust">12345
+-67890
+0c744
+x0xFF
+0b101010101
+</code></pre>
+
+<h3 id="list">List<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
+<p>A <code>List</code> is composed of values put together in brackets. The values must have some common type:  </p>
+<pre><code class="rust">var a_list = [1, 2, 3]
+var a_range = range(1, 3)
+
+var empty_list: List[Double] = []
+</code></pre>
+
+<h3 id="string">String<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
+<p>Represents a block of text. <code>String</code> carries the guarantee that all instances are valid utf-8, and that they do not carry <code>\0</code> characters inside.<br />
+<code>String</code> literals are single-line by default, but can be multi-line as well:  </p>
+<pre><code class="rust">var hi = &quot;Hello, world!&quot;
+
+var multi_line = &quot;&quot;&quot;Hello, \
+                    world!&quot;&quot;&quot;
+</code></pre>
+
+<h3 id="tuple">Tuple<a class="headerlink" href="#tuple" title="Permanent link">&para;</a></h3>
+<p>A <code>Tuple</code> is similar to a <code>List</code>, except that <code>Tuple</code>s have a fixed size, but can hold types that don't have any similarity to each other.<br />
+A <code>Tuple</code> begins with <code>&lt;[</code> and ends with <code>]&gt;</code>:  </p>
+<pre><code class="rust">var a_tuple: Tuple[String, Double] = &lt;[&quot;hi&quot;, 34.93]&gt;
+</code></pre>
+
+<h2 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">&para;</a></h2>
+<p>There are two kinds of comments:  </p>
+<pre><code class="rust"># A single-line comment
+
+#[ And
+   a 
+   multi-line
+   comment ]#
+</code></pre>
+
+<h2 id="escape-codes">Escape codes<a class="headerlink" href="#escape-codes" title="Permanent link">&para;</a></h2>
+<p><code>String</code>, <code>ByteString</code>, and <code>Byte</code> support the following escape sequences:<br />
+- <code>\a</code>: Bell<br />
+- <code>\b</code>: Backspace<br />
+- <code>\t</code>: Tab<br />
+- <code>\n</code>: A newline<br />
+- <code>\r</code>: Carriage return<br />
+- <code>\"</code>: The <code>"</code> character<br />
+- <code>\'</code>: The <code>'</code> character<br />
+- <code>\\</code>: The <code>\</code> character<br />
+- <code>\/</code>: <code>\</code> on Windows, <code>/</code> elsewhere.<br />
+- <code>\ddd</code>: 'ddd' is up to 3 digits, scanned in decimal. This can yield any value between 0 and 255 inclusive. Scanning stops either after 3 digits have been consumed, or a non-base 10 digit occurs.<br />
+- <code>\&lt;newline&gt;</code>: <code>ByteString</code> and <code>String</code> only. The newline of the current line and the leading whitespace (<code>' '</code> or <code>'\t'</code>) will be omitted from the literal.  </p>
+<h2 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">&para;</a></h2>
+<p>Basic arithmatic operations (<code>+ - * /</code>) can be used for two <code>Double</code> values, or two <code>Integer</code> values, or when there is one <code>Double</code> and one <code>Integer</code> value.<br />
+The result is a <code>Double</code> if either side is a <code>Double</code>, <code>Integer</code> otherwise.
+Other primitive operations (shifts, bitwise operations, and modulo) are only valid if both sides are <code>Integer</code>.</p>
+<h2 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h2>
+<p>Comparison operations (<code>&gt;= &gt; &lt; &lt;=</code>) are allowed on any two sets of <code>Integer</code>, <code>String</code>, or <code>Double</code>.<br />
+Equality operations (<code>== !=</code>) are allowed on any two equivalent types.<br />
+Simple values like <code>Integer</code>, and <code>Double</code> are straightforward: They are equal only when they are the same value.<br />
+<code>List</code>, <code>Tuple</code>, <code>Hash</code>, and variants use structural comparison.<br />
+All other containers and more interesting types use identity comparison. A comparison such as <code>SomeClass(2, 4) == SomeClass(2, 4)</code> will always return <code>false</code>, since each <code>SomeClass</code> is a different instance.  </p>
+<h2 id="interpolation">Interpolation<a class="headerlink" href="#interpolation" title="Permanent link">&para;</a></h2>
+<p>The <code>++</code> operator and <code>String.format</code> all make use of built-in interpolation. Interpolation works as follows:<br />
+Primitive values such as <code>Integer</code>, <code>Double</code>, and <code>String</code> have their content written out.<br />
+Built-in containers have their inner contents written out. <code>Hash</code> does not guarantee an ordering to the contents it writes out.<br />
+Non-scoped variants print just their name and their contents. Scoped variants print out the enum name and a dot first.
+Classes print out their address.  </p>
+<h2 id="if">If<a class="headerlink" href="#if" title="Permanent link">&para;</a></h2>
+<pre><code class="rust">if x == 0: {
+  # do something...
+elif x == 1:
+  # do something another...
+else:
+  # do something another...
+}
+</code></pre>
+
+<h2 id="loops">Loops<a class="headerlink" href="#loops" title="Permanent link">&para;</a></h2>
+<p>There are <code>while</code>, <code>for</code> and built-in classes' iterators(such as <code>List.each</code>):  </p>
+<pre><code class="rust">var i = 0
+while i &lt; 3: {
+  sayln(i)
+  i += 1
+}
+
+for n in 0...3: {
+  sayln(n)
+}
+
+range(1, 3).each(|x: Integer| sayln(x))
+</code></pre>
+
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+<p>In <strong>Loli</strong> functions are first-class entities. They can be passed around as arguments, returned, stored in vars, and so on.  </p>
+<h3 id="declaration">Declaration<a class="headerlink" href="#declaration" title="Permanent link">&para;</a></h3>
+<pre><code class="rust">fn add(a: Integer, b: Integer): Integer {
+  return a + b
+}
+</code></pre>
+
+<p>The above defines <code>add</code> as taking two <code>Integer</code> values and producing an <code>Integer</code> as output.<br />
+In the event that a function has no arguments, or produces no output, that entire section can be omitted:  </p>
+<pre><code class="rust">fn life_meaning: Integer {
+  return 42
+}
+fn nothing(a: Integer) {
+}
+
+fn empty {
+}
+</code></pre>
+
+<p>Like many curly-brace family languages, functions are invoked by passing their arguments like so: <code>add(5, 10)</code> to receive <code>15</code>.<br />
+Omitting a return type doesn't mean that a function doesn't return anything.<br />
+A function that doesn't mention a return value will actually the value unit of the class <code>Unit</code>. Since all functions actually return a value (even if it's just <code>unit</code>), it's possible to chain functions that otherwise could not be chained:  </p>
+<pre><code class="rust">fn nop { }
+
+sayln(nop()) # unit
+</code></pre>
+
+<p>Functions can also be used as arguments:  </p>
+<pre><code class="rust">fn square(a: Integer): Integer {
+  return a * a
+}
+
+fn apply(a: Integer, fn: Function(Integer =&gt; Integer)): Integer {
+  return fn(a)
+}
+
+sayln(apply(10, square)) # 100
+</code></pre>
+
+<p>The <code>fn</code> keyword has a number of modifiers that are available to it (<code>pub</code>, <code>future</code>, <code>sta</code>, etc.). For simplicity, required that modifiers are introduced in alphabetical order.  </p>
+<h3 id="lambdas">Lambdas<a class="headerlink" href="#lambdas" title="Permanent link">&para;</a></h3>
+<p>One problem with the above example is that <code>square</code> is relatively simple. One is likely to assume that <code>square</code> will take an <code>a</code>, multiply it by itself, and return it.<br />
+But suppose that the codebase is large, and <code>square</code> is somewhere else. If there is an issue, the source to <code>square</code> must be tracked down.<br />
+An alternative is to use a lambda. Lambdas are nameless functions that can be used where a function is needed.<br />
+A lambda begins with <code>(|</code>, followed by argument names, until <code>|</code> is seen. From there, everything until there is a matching <code>)</code> for the <code>(|</code> is the body of the lambda.<br />
+Here's the above example, rewritten to use a lambda:  </p>
+<pre><code class="rust">fn apply(a: Integer, fn: Function(Integer =&gt; Integer)): Integer {
+  return fn(a)
+}
+
+sayln(apply(10, (|a| a * a))) # 100
+</code></pre>
+
+<p>Another feature of lambdas is that they are values, and the var they're assigned to can opt to have a different lambda. On the other hand, lambdas are quite restricted, and not eligible for many of the function features listed below.<br />
+Lambdas don't require type information.<br />
+In the above example, the lambda uses inference to determine that a should be of type <code>Integer</code>.<br />
+Since lambdas exist primarily to return some kind of a value, the return type of a lambda is the last expression that run. If the last expression is part of a block such as <code>if</code> or <code>match</code>, then the return type is instead <code>unit</code>.  </p>
+<p>Using the <code>future</code> keyword before <code>fn</code> denotes that the function will be declared at some point in the future.<br />
+Instead of giving the <code>fn</code> a body, it must instead have the triple dot (<code>...</code>) token:  </p>
+<pre><code class="rust">future fn add(Integer, Integer): Integer { ... }
+
+# *a lot of code*
+
+fn add(x: Integer, y: Integer): Integer {
+  return x + y
+}
+</code></pre>
+
+<p>Functions declared with <code>future</code> are not allowed to specify names for their variables, and are not allowed to use keyword arguments.<br />
+While there are unresolved <code>future</code> declarations, it is a syntax error to attempt to import a file, declare a class property, or declare a variable. This is done to prevent the resolving function from using variables that are not properly initialized.<br />
+Additionally, if a class or module finishes with incomplete <code>future</code> declarations, a syntax error is generated immediately.  </p>
+<h3 id="varargs">Varargs<a class="headerlink" href="#varargs" title="Permanent link">&para;</a></h3>
+<p>Adding <code>...</code> to the end of a type denotes that the function can receive a variable number of arguments of that type.<br />
+The function receives the arguments as a <code>List</code> of the type provided. If no arguments were passed, the <code>List</code> will be empty.  </p>
+<pre><code class="rust">fn sum(n: Integer...): Integer {
+  var result = 0
+  n.each(|x| result += x)
+  return result
+}
+</code></pre>
+
+<h3 id="optargs">Optargs<a class="headerlink" href="#optargs" title="Permanent link">&para;</a></h3>
+<p>Adding <code>*</code> before a type, then <code>= &lt;value&gt;</code> after it denotes that the parameter is optional. Optional arguments may be a simple value, or an expression. Required arguments must not come after an optional argument.<br />
+The expressions of optional arguments, if run, are always run from left to right. As a result, it's permissible for a parameter to depend on another to the left of it.  </p>
+<pre><code class="rust">fn sample(a: *Integer = 10): Integer { 
+  return a + 10 
+}
+</code></pre>
+
+<p>The calling function runs the optional argument expressions each time they are needed. As a result, each invocation will receive fresh versions of a default argument that do not carry over into the next invocation.<br />
+Mixing variable and optional arguments is permissible. By default, the vararg parameter receives an empty <code>List</code> if no values are passed. Mixing these two features allows a different default value.  </p>
+<h3 id="keyargs">Keyargs<a class="headerlink" href="#keyargs" title="Permanent link">&para;</a></h3>
+<p>Placing <code>:&lt;name&gt;</code> before the name of a parameter will allow the function to be called using keyword arguments.<br />
+Keyword arguments allow calling a function with arguments in a different order than the function's parameters.<br />
+The function can then be called either with positional arguments or keyword arguments.  </p>
+<pre><code class="rust">fn sample(:first x: Integer, :second y: Integer, :third z: Integer): Integer {
+  return x + y + z
+}
+
+sample(1, 2, 3) # 6
+sample(1, :second 2, :third 3) # 6
+sample(:third 30, :first 10, :second 5) # 45
+</code></pre>
+
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<p>User-declared classes provide a way to group together a set of data and related functions. In <strong>Loli</strong>, classes are only allowed to have one parent class at most as a way of keeping their internal implementation simpler.   </p>
+<h3 id="declaration_1">Declaration<a class="headerlink" href="#declaration_1" title="Permanent link">&para;</a></h3>
+<pre><code class="rust">class Point(x: Integer, y: Integer) {
+  pub var @x = x
+  pub var @y = y
+}
+</code></pre>
+
+<p>The body of the <code>class</code> block serves to both define class variables and to initialize them.<br />
+Inside a class, properties have a <code>@</code> prefix. Outside of it, both methods and properties are accessed using a dot.  </p>
+<pre><code class="rust">class Point(x: Integer, y: Integer) {
+  pub var @x = x
+  pub var @y = y
+
+  pub fn inc(x_value: Integer, y_value: Integer) {
+    @x += x_value
+    @y += y_value
+  }
+}
+</code></pre>
+
+<p>Because both class properties and class methods are accessed the same outside of a class, it is a syntax error to have a property and a method with the same name.<br />
+In situations where class inputs become properties, a shorthand is available:  </p>
+<pre><code class="rust">class Point(pub var @x: Integer, pub var @y: Integer) {  }
+</code></pre>
+
+<h3 id="scope">Scope<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h3>
+<p>Prior to declaring a class member, a scope is needed.<br />
+There are three possible scopes that a class member or function can have:<br />
+- <code>pub</code> denotes that the member is available anywhere. <br />
+- <code>pro</code> restricts the member to the class itself, or any class that inherits from it.<br />
+- <code>pri</code> restricts the member to only the class.  </p>
+<h3 id="inheritance">Inheritance<a class="headerlink" href="#inheritance" title="Permanent link">&para;</a></h3>
+<p>Classes use the <code>&lt;</code> token to denote inheriting from another class when writing the header:  </p>
+<pre><code class="rust">class Point2D(pub var @x: Integer, pub var @y: Integer) {}
+
+class Point3D(x: Integer, y: Integer, pub var @z: Integer) &lt; Point2D(x, y) {}
+</code></pre>
+
+<h3 id="static-methods">Static methods<a class="headerlink" href="#static-methods" title="Permanent link">&para;</a></h3>
+<p>By default, class methods receive an implicit <code>self</code> parameter as their first argument. The <code>sta</code> qualifier, when applied to a class method, turns that behavior off:  </p>
+<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
+<p>Occasionally there are errors that are not expected: A subscript of a <code>List</code> is out-of-bounds or there is an accidental attempt to divide by zero.<br />
+There are predefined exceptions for that.<br />
+The base of all exceptions is the <code>Exception</code> class. It is declared as follows:  </p>
+<pre><code class="rust">class Exception(pub var @message: String) {
+  pub var @traceback: List[String] = []
+}
+</code></pre>
+
+<p>When an exception is raised the <code>traceback</code> field of it is replaced with the current call stack.<br />
+List of predefined exceptions:  <br />
+- <code>Exception</code>: Base class of all raiseable exceptions.<br />
+- <code>DivisionByZero</code>: Attempt to divide or modulo by zero.<br />
+- <code>IndexError</code>: Out-of-bounds access of a container (such as <code>List</code>), <code>String</code> or <code>ByteString</code>.<br />
+- <code>IOError</code>: Incorrect usage of a <code>File</code>.<br />
+- <code>KeyError</code>: Attempt to read a value from a <code>Hash</code> that does not exist.<br />
+- <code>RuntimeError</code>: Bad runtime action such as modifying a hash during iteration or exceeding the recursion limit.<br />
+- <code>ValueError</code>: Invalid or unreasonable value provided.<br />
+Any of these exceptions can be inherited to create a custom exception.<br />
+Exception can be raised using <code>raise</code> keyword:</p>
+<pre><code class="rust">raise IndexError(&quot;Index out of range&quot;)
+</code></pre>
+
+<p>And catched using <code>try/except</code> block:  </p>
+<pre><code class="rust">try: {
+  raise IndexError(&quot;Index out of range&quot;)
+except Exception as e:
+  sayln(&quot;Exception: {0}&quot;.format(e.message))
+}
+</code></pre>
+
+<h2 id="generics">Generics<a class="headerlink" href="#generics" title="Permanent link">&para;</a></h2>
+<p>In <strong>Loli</strong> classes, enums, and functions can make use of generics.<br />
+They must be a single capital letter, must be declared before use, and yet there are no traits or qualifiers.  </p>
+<pre><code class="rust">class Stack[A](element: A) {
+  pub var @contents = [element]
+
+  pub fn push(value: A): self {
+    @contents.push(value)
+  }
+}
+
+Stack(1).push(2).push(3) # [1, 2, 3]
+</code></pre>
+
+<h2 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h2>
+<p>Import system is very similar to Python.  </p>
+<pre><code class="rust">import sys
+
+sys.exit()
+
+import package
+
+import package as pkg
+
+import (somefn, somevar) package
+
+import &quot;folder/package&quot;
+</code></pre>
+
+<h3 id="import-paths">Import paths<a class="headerlink" href="#import-paths" title="Permanent link">&para;</a></h3>
+<p>For default paths tried in the following order:  </p>
+<pre><code>./&lt;name&gt;.li
+./&lt;name&gt;.(dll/so)
+
+./pkg/&lt;name&gt;/&lt;name&gt;.li
+./pkg/&lt;name&gt;/&lt;name&gt;.(dll/so)
+
+&lt;original root&gt;/pkg/&lt;name&gt;/&lt;name&gt;.li
+&lt;original root&gt;/pkg/&lt;name&gt;/&lt;name&gt;.(dll/so)
+</code></pre>
+
+<p>If a module executes code, the code is run only the first time the module is loaded. </p>
+<h2 id="enums">Enums<a class="headerlink" href="#enums" title="Permanent link">&para;</a></h2>
+<p>Enums are a datatype composed of a fixed set of variant classes. A variant class can take any number of types (including the enum itself), or can be empty.<br />
+Enums declarations can include methods as well as variants.  </p>
+<pre><code class="rust">enum Rgb {
+  Red,
+  Green,
+  Blue
+
+  fn is_blue: Boolean {
+    match self: {
+      case Blue: return true
+      else:      return false
+    }
+  }
+}
+</code></pre>
+
+<p>Since enums aren't inheritable, their methods don't need qualifiers like with user-defined classes.<br />
+By default, variants of an enum are flat. Variants of a flat enum can be referenced directly.<br />
+In contrast, the <code>scoped</code> qualifier makes it so that variants of an enum are only accessible through the enum name.<br />
+Also variants support varargs and keyargs, but no optargs because they are not actually functions.    </p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-01-27 10:17:52
+-->

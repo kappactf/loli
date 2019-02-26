@@ -1,0 +1,18 @@
+#[
+    Use `import sys`, to import this virtual file
+]#
+
+var argv: List[String] = []
+
+future fn listdir(String): List[String] { ... }
+future fn rmdir(String): Boolean { ... }
+future fn remove(String): Boolean { ... }
+future fn mkdir(String): Boolean { ... }
+future fn exists(String): Boolean { ... }
+future fn is_dir(String): Boolean { ... }
+future fn is_file(String): Boolean { ... }
+future fn exit(*Integer) { ... }
+future fn getenv(String): Option[String] { ... }
+future fn setenv(String): Boolean { ... }
+future fn recursion_limit: Integer { ... }
+future fn set_recursion_limit(Integer) { ... }

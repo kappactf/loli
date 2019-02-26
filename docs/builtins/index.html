@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Built-ins - LoliDocs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">LoliDocs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Built-ins</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#built-in-modules-reference">Built-in modules reference</a></li>
+            <li><a href="#builtin">builtin</a></li>
+            <li><a href="#random">random</a></li>
+            <li><a href="#sys">sys</a></li>
+            <li><a href="#time">time</a></li>
+            <li><a href="#hash">hash</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="built-in-modules-reference">Built-in modules reference<a class="headerlink" href="#built-in-modules-reference" title="Permanent link">&para;</a></h1>
+<p>Except for the <code>builtin</code> module, all modules listed here can be imported from any file inside of the interpreter. This is unlike other modules, which are loaded using relative paths.<br />
+These modules can be imported like <code>import sys</code>, then used like <code>sys.exit()</code>.<br />
+The <code>builtin</code> module is unique because the classes, enums, and functions are the foundation of the interpreter. Instead of requiring it to be imported, the contents of <code>builtin</code> are instead available without a namespace.  </p>
+<h2 id="builtin">builtin<a class="headerlink" href="#builtin" title="Permanent link">&para;</a></h2>
+<p>The builtin package provides the classes, vars, and functions that form the foundation of <strong>Loli</strong>.  </p>
+<h3 id="class-boolean">Class Boolean<a class="headerlink" href="#class-boolean" title="Permanent link">&para;</a></h3>
+<p>The <code>Boolean</code> class represents a value that is either <code>true</code> or <code>false</code>.  </p>
+<h4 id="fn-to_i-integer">fn to_i: Integer<a class="headerlink" href="#fn-to_i-integer" title="Permanent link">&para;</a></h4>
+<p>Convert a <code>Boolean</code> to an <code>Integer</code>. <code>true</code> becomes <code>1</code>, <code>false</code> becomes <code>0</code>.  </p>
+<h4 id="fn-to_s-string">fn to_s: String<a class="headerlink" href="#fn-to_s-string" title="Permanent link">&para;</a></h4>
+<p>Convert a <code>Boolean</code> to a <code>String</code>.  </p>
+<h3 id="class-byte">Class Byte<a class="headerlink" href="#class-byte" title="Permanent link">&para;</a></h3>
+<p>The <code>Byte</code> class represents a wrapper over a single <code>Byte</code> value. A <code>Byte</code> value is always unsigned, giving it a range from 0 to 255.<br />
+<code>Byte</code> literals are written using 't' as the suffix on an <code>Integer</code> value.  </p>
+<h4 id="fn-to_i-integer_1">fn to_i: Integer<a class="headerlink" href="#fn-to_i-integer_1" title="Permanent link">&para;</a></h4>
+<p>Convert a <code>Byte</code> to an <code>Integer</code>.  </p>
+<h3 id="class-bytestring">Class ByteString<a class="headerlink" href="#class-bytestring" title="Permanent link">&para;</a></h3>
+<p>The <code>ByteString</code> class represents a bag of bytes. A <code>ByteString</code> may have <code>\0</code> values embedded within it. It may also have data that is not valid as utf-8. The <code>ByteString</code> class currently does not support any primitive operations.  </p>
+<h4 id="fn-each_bytefun-functionbyte">fn each_byte(fun: Function(Byte))<a class="headerlink" href="#fn-each_bytefun-functionbyte" title="Permanent link">&para;</a></h4>
+<p>Call <code>fun</code> for each <code>Byte</code> within the given <code>ByteString</code>.  </p>
+<h4 id="fn-to_s-string_1">fn to_s: String<a class="headerlink" href="#fn-to_s-string_1" title="Permanent link">&para;</a></h4>
+<p>Attempt to transform the given <code>ByteString</code> into a <code>String</code>, invalid utf-8 or embedded <code>\0</code> values within <code>self</code> will raise a <code>ValueError</code>.  </p>
+<h4 id="fn-len-integer">fn len: Integer<a class="headerlink" href="#fn-len-integer" title="Permanent link">&para;</a></h4>
+<p>Return the number of <code>Byte</code> values within <code>self</code>. </p>
+<h4 id="fn-slicestart-integer-0-stop-integer-1-bytestring">fn slice(start: <em>Integer = 0, stop: </em>Integer = -1): ByteString<a class="headerlink" href="#fn-slicestart-integer-0-stop-integer-1-bytestring" title="Permanent link">&para;</a></h4>
+<p>Create a new <code>ByteString</code> copying a section of self from start to stop.<br />
+If a negative index is given, it is treated as an offset from the end of <code>self</code>, with <code>-1</code> being considered the last element.  </p>
+<h3 id="class-coroutine">Class Coroutine<a class="headerlink" href="#class-coroutine" title="Permanent link">&para;</a></h3>
+<p>A <code>Coroutine</code> is similar to a <code>Function</code>, except that it can also yield values at different points along its lifetime. Every <code>Coroutine</code> has a callstack that belongs to it, as well as an exception state. A <code>Coroutine</code>'s status can be discovered by one of the <code>is_</code> methods.<br />
+The <code>Coroutine</code> type takes two types. The first is the type that the <code>Coroutine</code> will be returning or yielding. The second is the type that the <code>Coroutine</code> takes as a message. A <code>Coroutine</code> can take empty <code>Unit</code> messages for simplicity, or a more interesting type if a more bidirectional kind of messaging is wanted.<br />
+A <code>Coroutine</code> can get the value resumed using <code>Coroutine.receive</code> while within the <code>Coroutine</code>.<br />
+The first argument of a <code>Function</code> to be made a <code>Coroutine</code> is always the <code>Coroutine</code> itself. If the <code>Function</code> specifies extra arguments, those arguments are to be passed to the intermediate result of <code>Coroutine.create</code>.  </p>
+<h4 id="sta-fn-buildfun-functioncoroutinea-b-coroutinea-b">sta fn build(fun: Function(Coroutine[A, B])): Coroutine[A, B]<a class="headerlink" href="#sta-fn-buildfun-functioncoroutinea-b-coroutinea-b" title="Permanent link">&para;</a></h4>
+<p>Build a new <code>Coroutine</code> that wraps over the <code>Function</code> provided.  </p>
+<h4 id="sta-fn-build_with_valuefun-functioncoroutinea-b-c-value-c-coroutinea-b">sta fn build_with_value(fun: Function(Coroutine[A, B], C), value: C): Coroutine[A, B]<a class="headerlink" href="#sta-fn-build_with_valuefun-functioncoroutinea-b-c-value-c-coroutinea-b" title="Permanent link">&para;</a></h4>
+<p>Build a new <code>Coroutine</code> that wraps over the <code>Function</code> provided. The base <code>Function</code> has the second argument set to 'value' exactly once before any resumption takes place. This method is provided so that a <code>Coroutine</code> can take an extra value (perhaps a <code>Tuple</code>) without needing to be a closure.  </p>
+<h4 id="fn-is_done-boolean">fn is_done: Boolean<a class="headerlink" href="#fn-is_done-boolean" title="Permanent link">&para;</a></h4>
+<p>Returns <code>true</code> if the <code>Coroutine</code> has returned a value instead of yielding, <code>false</code> otherwise.  </p>
+<h4 id="fn-is_failed-boolean">fn is_failed: Boolean<a class="headerlink" href="#fn-is_failed-boolean" title="Permanent link">&para;</a></h4>
+<p>Returns <code>true</code> if the <code>Coroutine</code> raised an exception, <code>false</code> otherwise.  </p>
+<h4 id="fn-is_waiting-boolean">fn is_waiting: Boolean<a class="headerlink" href="#fn-is_waiting-boolean" title="Permanent link">&para;</a></h4>
+<p>Returns <code>true</code> if the <code>Coroutine</code> is ready to be resumed, <code>false</code> otherwise.  </p>
+<h4 id="fn-is_running-boolean">fn is_running: Boolean<a class="headerlink" href="#fn-is_running-boolean" title="Permanent link">&para;</a></h4>
+<p>Returns <code>true</code> if the <code>Coroutine</code> is running, <code>false</code> otherwise. Note that this does not mean that the <code>Coroutine</code> is the one currently running, only that it is running.  </p>
+<h4 id="fn-receive-b">fn receive: B<a class="headerlink" href="#fn-receive-b" title="Permanent link">&para;</a></h4>
+<p>This function returns the value that the <code>Coroutine</code> is holding, so long as the <code>Coroutine</code> is the one currently running.<br />
+The value stored by the <code>Coroutine</code> is initially the first argument sent to the intermediate builder. Following that, it is the last value that was sent to the <code>Coroutine</code> using <code>Coroutine.resume_with</code>.  </p>
+<h4 id="sta-fn-resumeself-coroutinea-unit-optiona">sta fn resume(self: Coroutine[A, Unit]): Option[A]<a class="headerlink" href="#sta-fn-resumeself-coroutinea-unit-optiona" title="Permanent link">&para;</a></h4>
+<p>Attempt to resume the <code>Coroutine</code> provided. A <code>Coroutine</code> can be resumed only if it is currently in the 'waiting' state.<br />
+This function does not send a value to the <code>Coroutine</code> which is why it requires the second parameter to be <code>Unit</code>.<br />
+If the <code>Coroutine</code> is suspended and yields a value, the result is a <code>Some</code> of that value.<br />
+Otherwise, this returns <code>None</code>.<br />
+Note that if a <code>Coroutine</code> returns a value instead of yielding, the value is ignored and the result is <code>None</code>.  </p>
+<h4 id="fn-resume_withvalue-b-optiona">fn resume_with(value: B): Option[A]<a class="headerlink" href="#fn-resume_withvalue-b-optiona" title="Permanent link">&para;</a></h4>
+<p>Attempt to resume the <code>Coroutine</code> provided. A <code>Coroutine</code> can be resumed only if it is currently in the 'waiting' state.<br />
+This function includes a value for the <code>Coroutine</code> to store. The value is stored only if the <code>Coroutine</code> is resumed. If stored, the old value is ejected from the <code>Coroutine</code> provided.<br />
+If the <code>Coroutine</code> is suspended and yields (or returns) a value, the result is a <code>Some</code> of that value.<br />
+Otherwise, this returns <code>None</code>.  </p>
+<h4 id="yieldvalue-a">yield(value: A)<a class="headerlink" href="#yieldvalue-a" title="Permanent link">&para;</a></h4>
+<p>Yield <code>value</code> from the <code>Coroutine</code> given. Control returns to whatever invoked <code>self</code>.<br />
+Raises <code>RuntimeError</code> if self is the current <code>Coroutine</code>, or within a foreign call.  </p>
+<h3 id="class-double">Class Double<a class="headerlink" href="#class-double" title="Permanent link">&para;</a></h3>
+<h4 id="fn-to_i-integer_2">fn to_i: Integer<a class="headerlink" href="#fn-to_i-integer_2" title="Permanent link">&para;</a></h4>
+<p>Convert a <code>Double</code> to an <code>Integer</code>.  </p>
+<h3 id="class-file">Class File<a class="headerlink" href="#class-file" title="Permanent link">&para;</a></h3>
+<p>The <code>File</code> class provides a wrapper over a C <code>FILE *</code> struct. A <code>File</code> is closed automatically when a scope exits (though not immediately). However, it is also possible to manually close a <code>File</code>.  </p>
+<h4 id="fn-close">fn close<a class="headerlink" href="#fn-close" title="Permanent link">&para;</a></h4>
+<p>Close <code>self</code> if it is open, or do nothing if already closed.<br />
+Note that for standard streams, this marks the <code>File</code> as closed, but does not actually close the stream.  </p>
+<h4 id="fn-each_linefun-functionbytestring">fn each_line(fun: Function(ByteString))<a class="headerlink" href="#fn-each_linefun-functionbytestring" title="Permanent link">&para;</a></h4>
+<p>Read each line of text from <code>self</code>, passing it down to <code>fun</code> for processing.<br />
+Raises <code>IOError</code> if <code>self</code> is not open for reading, or is closed.  </p>
+<h4 id="fn-flush">fn flush<a class="headerlink" href="#fn-flush" title="Permanent link">&para;</a></h4>
+<p>This function writes all buffered data associated with the <code>File</code> provided.<br />
+Raises <code>IOError</code> if self is closed or not open for writing.  </p>
+<h4 id="sta-fn-openpath-string-mode-string-file">sta fn open(path: String, mode: String): File<a class="headerlink" href="#sta-fn-openpath-string-mode-string-file" title="Permanent link">&para;</a></h4>
+<p>Attempt to open <code>path</code> using the <code>mode</code> given.<br />
+<code>mode</code> may be one of the following:<br />
+- <code>r</code>: read only, must exist<br />
+- <code>w</code>: write only  <br />
+- <code>a</code>: append, create if not exist  <br />
+- <code>r+</code>: read+write, must exist  <br />
+- <code>w+</code>: read+write, creates an empty file if needed.  <br />
+- <code>a+</code>: read+append<br />
+Raises <code>IOError</code> if unable to open <code>path</code>, or an invalid <code>mode</code> is provided.  </p>
+<h4 id="fn-printdata-a">fn print(data: A)<a class="headerlink" href="#fn-printdata-a" title="Permanent link">&para;</a></h4>
+<p>Attempt to write the contents of<code>data</code> to the file provided. <code>data</code> is written with a newline at the end.<br />
+Raises <code>IOError</code> if <code>self</code> is closed or is not open for writing.  </p>
+<h4 id="fn-readsize-integer-1-bytestring">fn read(size: *Integer = -1): ByteString<a class="headerlink" href="#fn-readsize-integer-1-bytestring" title="Permanent link">&para;</a></h4>
+<p>Read <code>size</code> bytes from <code>self</code>. If <code>size</code> is negative, then the full contents of <code>self</code> are read. This stops if either <code>size</code> bytes are read, or the end of <code>self</code> is reached.<br />
+Raises <code>IOError</code> if <code>self</code> is not open for reading, or is closed.  </p>
+<h4 id="fn-read_line-bytestring">fn read_line: ByteString<a class="headerlink" href="#fn-read_line-bytestring" title="Permanent link">&para;</a></h4>
+<p>Attempt to read a line of text from <code>self</code>. When end of file reached, returns <code>b""</code>.<br />
+Raises <code>IOError</code> if <code>self</code> is not open for reading, or is closed.  </p>
+<h4 id="fn-writedata-a">fn write(data: A)<a class="headerlink" href="#fn-writedata-a" title="Permanent link">&para;</a></h4>
+<p>Attempt to write the contents of <code>data</code> to the file provided.<br />
+Raises <code>IOError</code> if <code>self</code> is closed or is not open for writing.   </p>
+<h3 id="class-function">Class Function<a class="headerlink" href="#class-function" title="Permanent link">&para;</a></h3>
+<p>The <code>Function</code> class represents a block of code to be called, which may or may not produce a value. <code>Function</code> values are first-class, and can be passed around as arguments, placed into a <code>List</code>, and so on.  </p>
+<h3 id="class-hash">Class Hash<a class="headerlink" href="#class-hash" title="Permanent link">&para;</a></h3>
+<p>The <code>Hash</code> class provides a mapping between a key and a value. <code>Hash</code> values can be created through <code>[key1 =&gt; value1, key2 =&gt; value2, ...]</code>. When writing a <code>Hash</code>, the key is the first type, and the value is the second.<br />
+<code>[1 =&gt; "a", 2 =&gt; "b", 3 =&gt; "c"]</code> would therefore be written as <code>Hash[Integer, String]</code>.  </p>
+<h4 id="fn-clear">fn clear<a class="headerlink" href="#fn-clear" title="Permanent link">&para;</a></h4>
+<p>Removes all pairs currently present within <code>self</code>.
+Raises <code>RuntimeError</code> if self is currently being iterated over.  </p>
+<h4 id="fn-deletekey-a">fn delete(key: A)<a class="headerlink" href="#fn-deletekey-a" title="Permanent link">&para;</a></h4>
+<p>Attempt to remove <code>key</code> from <code>self</code>. If <code>key</code> is not present within <code>self</code> raises <code>KeyError</code>.  <br />
+Raises <code>RuntimeError</code> if self is currently being iterated over.  </p>
+<h4 id="fn-each_pairfun-functiona-b">fn each_pair(fun: Function(A, B))<a class="headerlink" href="#fn-each_pairfun-functiona-b" title="Permanent link">&para;</a></h4>
+<p>Iterate through each pair that is present within <code>self</code>. For each of the pairs, call <code>fun</code> with the key and value of each pair.  </p>
+<h4 id="fn-getkey-a-optionb">fn get(key: A): Option[B]<a class="headerlink" href="#fn-getkey-a-optionb" title="Permanent link">&para;</a></h4>
+<p>Attempt to find key within <code>self</code>.
+If key is present, then a <code>Some</code> containing the associated value is returned.<br />
+Otherwise, this returns <code>None</code>.  </p>
+<h4 id="fn-has_keykey-a-boolean">fn has_key(key: A): Boolean<a class="headerlink" href="#fn-has_keykey-a-boolean" title="Permanent link">&para;</a></h4>
+<p>Return <code>true</code> if <code>key</code> is present within <code>self</code>, <code>false</code> otherwise.  </p>
+<h4 id="fn-keys-lista">fn keys: List[A]<a class="headerlink" href="#fn-keys-lista" title="Permanent link">&para;</a></h4>
+<p>Construct a <code>List</code> containing all values that are present within <code>self</code>. There is no guarantee of the ordering of the resulting <code>List</code>. </p>
+<h4 id="fn-map_valuesfun-functionb-c-hasha-c">fn map_values(fun: Function(B =&gt; C)): Hash[A, C]<a class="headerlink" href="#fn-map_valuesfun-functionb-c-hasha-c" title="Permanent link">&para;</a></h4>
+<p>This iterates through <code>self</code> and calls <code>fun</code> for each element present. The result of this function is a newly-made <code>Hash</code> where each value is the result of the call to <code>fun</code>.  </p>
+<h4 id="fn-mergeothers-hasha-b-hasha-b">fn merge(others: Hash[A, B]...): Hash[A, B]<a class="headerlink" href="#fn-mergeothers-hasha-b-hasha-b" title="Permanent link">&para;</a></h4>
+<p>Create a new <code>Hash</code> that holds the result of self and each <code>Hash</code> present within others.<br />
+When duplicate elements are found, the value of the right-most <code>Hash</code> wins.  </p>
+<h4 id="fn-rejectfun-functiona-b-boolean-hasha-b">fn reject(fun: Function(A, B =&gt; Boolean)): Hash[A, B]<a class="headerlink" href="#fn-rejectfun-functiona-b-boolean-hasha-b" title="Permanent link">&para;</a></h4>
+<p>This calls <code>fun</code> for each element present within <code>self</code>. The result of this function is a newly-made <code>Hash</code> containing all values for which <code>fun</code> returns <code>false</code>.  </p>
+<h4 id="fn-selectfun-functiona-b-boolean-hasha-b">fn select(fun: Function(A, B =&gt; Boolean)): Hash[A, B]<a class="headerlink" href="#fn-selectfun-functiona-b-boolean-hasha-b" title="Permanent link">&para;</a></h4>
+<p>This calls <code>fun</code> for each element present within <code>self</code>. The result of this function is a newly-made <code>Hash</code> containing all values for which <code>fun</code> returns <code>true</code>.  </p>
+<h4 id="fn-len-integer_1">fn len: Integer<a class="headerlink" href="#fn-len-integer_1" title="Permanent link">&para;</a></h4>
+<p>Returns the number of key-value pairs present within <code>self</code>.  </p>
+<h3 id="class-integer">Class Integer<a class="headerlink" href="#class-integer" title="Permanent link">&para;</a></h3>
+<p>The <code>Integer</code> class is s native numeric type, represented with C <code>int64_t</code>.  </p>
+<h4 id="fn-to_bool-boolean">fn to_bool: Boolean<a class="headerlink" href="#fn-to_bool-boolean" title="Permanent link">&para;</a></h4>
+<p>Converts an <code>Integer</code> to a <code>Boolean</code>.  </p>
+<h4 id="fn-to_b-byte">fn to_b: Byte<a class="headerlink" href="#fn-to_b-byte" title="Permanent link">&para;</a></h4>
+<p>Convert an <code>Integer</code> to a <code>Byte</code>, truncating the value if necessary.  </p>
+<h4 id="fn-to_d-double">fn to_d: Double<a class="headerlink" href="#fn-to_d-double" title="Permanent link">&para;</a></h4>
+<p>Converts an <code>Integer</code> to a <code>Double</code>.  </p>
+<h4 id="fn-to_s-string_2">fn to_s: String<a class="headerlink" href="#fn-to_s-string_2" title="Permanent link">&para;</a></h4>
+<p>Convert an <code>Integer</code> to a <code>String</code> using base-10.  </p>
+<h3 id="class-list">Class List<a class="headerlink" href="#class-list" title="Permanent link">&para;</a></h3>
+<p>The <code>List</code> class represents a container of a given type, written as <code>List[&lt;inner type&gt;]</code>. A <code>List</code> value can be accessed through a positive index or a negative one (with negative indexes being an offset from the end).<br />
+Attempting to access an invalid index will raise <code>IndexError</code>.</p>
+<h4 id="fn-appendlist-lista-lista">fn append(list: List[A]): List[A]<a class="headerlink" href="#fn-appendlist-lista-lista" title="Permanent link">&para;</a></h4>
+<p>Append <code>list</code> to end of <code>self</code>. Returns modified list.  </p>
+<h4 id="fn-clear_1">fn clear<a class="headerlink" href="#fn-clear_1" title="Permanent link">&para;</a></h4>
+<p>Removes all elements present within <code>self</code>. No error is raised if <code>self</code> is being iterated over.  </p>
+<h4 id="fn-countfun-functiona-boolean-integer">fn count(fun: Function(A =&gt; Boolean)): Integer<a class="headerlink" href="#fn-countfun-functiona-boolean-integer" title="Permanent link">&para;</a></h4>
+<p>This calls <code>fun</code> for each element within <code>self</code>. The result of this function is the number of times that <code>fun</code> returns <code>true</code>.  </p>
+<h4 id="fn-delete_atindex-integer">fn delete_at(index: Integer)<a class="headerlink" href="#fn-delete_atindex-integer" title="Permanent link">&para;</a></h4>
+<p>Attempts to remove <code>index</code> from the <code>List</code>. If <code>index</code> is negative, then it is considered an offset from the end of the <code>List</code>.<br />
+Raises <code>IndexError</code> if <code>index</code> is out of range.  </p>
+<h4 id="fn-eachfun-functiona-lista">fn each(fun: Function(A)): List[A]<a class="headerlink" href="#fn-eachfun-functiona-lista" title="Permanent link">&para;</a></h4>
+<p>Calls <code>fun</code> for each element within <code>self</code>. The result of this function is <code>self</code>, so that this method can be chained with others.  </p>
+<h4 id="fn-each_indexfun-functioninteger-lista">fn each_index(fun: Function(Integer)): List[A]<a class="headerlink" href="#fn-each_indexfun-functioninteger-lista" title="Permanent link">&para;</a></h4>
+<p>Calls <code>fun</code> for each element within <code>self</code>. Rather than receive the elements of <code>self</code>, <code>fun</code> instead receives the index of each element.  </p>
+<h4 id="fn-foldstart-a-fun-functiona-a-a-a">fn fold(start: A, fun: Function(A, A =&gt; A)): A<a class="headerlink" href="#fn-foldstart-a-fun-functiona-a-a-a" title="Permanent link">&para;</a></h4>
+<p>This calls <code>fun</code> for each element present within <code>self</code>. The first value sent to <code>fun</code> is initially start, but will later be the result of <code>fun</code>. Therefore, the value as it accumulates can be found in the first value sent to <code>fun</code>.<br />
+The result of this function is the result of doing an accumulation on each element within <code>self</code>.  </p>
+<h4 id="sta-fn-fillcount-integer-fun-functioninteger-a-lista">sta fn fill(count: Integer, fun: Function(Integer =&gt; A)): List[A]<a class="headerlink" href="#sta-fn-fillcount-integer-fun-functioninteger-a-lista" title="Permanent link">&para;</a></h4>
+<p>Generate a List of <code>count</code> items using <code>fun</code>.<br />
+This calls <code>fun</code> with an index that starts at <code>0</code> and proceeds until <code>count</code>, and does not include <code>count</code>.<br />
+If <code>count</code> is <code>0</code> or negative, then the resulting <code>List</code> will be empty.  </p>
+<h4 id="fn-getindex-integer-optiona">fn get(index: Integer): Option[A]<a class="headerlink" href="#fn-getindex-integer-optiona" title="Permanent link">&para;</a></h4>
+<p>Attempt to find <code>index</code> within <code>self</code>.<br />
+If the <code>index</code> is within <code>self</code>, then the value is returned within a <code>Some</code>.<br />
+Otherwise, this returns <code>None</code>.  </p>
+<h4 id="fn-insertindex-integer-value-a">fn insert(index: Integer, value: A)<a class="headerlink" href="#fn-insertindex-integer-value-a" title="Permanent link">&para;</a></h4>
+<p>Attempt to insert value at <code>index</code> within <code>self</code>. If <code>index</code> is negative, then it is treated as an offset from the end of <code>self</code>.<br />
+Raises <code>IndexError</code> if <code>index</code> is not within <code>self</code>.  </p>
+<h4 id="fn-joinseparator-string-string">fn join(separator: *String = ""): String<a class="headerlink" href="#fn-joinseparator-string-string" title="Permanent link">&para;</a></h4>
+<p>Create a <code>String</code> consisting of the elements of <code>self</code> joined with <code>separator</code>. The elements of <code>self</code> are converted to a <code>String</code> as if they were interpolated. If <code>self</code> is empty, then the result is an empty <code>String</code>.  </p>
+<h4 id="fn-mapfun-functiona-b-listb">fn map(fun: Function(A =&gt; B)): List[B]<a class="headerlink" href="#fn-mapfun-functiona-b-listb" title="Permanent link">&para;</a></h4>
+<p>This calls <code>fun</code> on each element within <code>self</code>. The result of this function is a newly-made <code>List</code> containing the results of <code>fun</code>.  </p>
+<h4 id="fn-pop-a">fn pop: A<a class="headerlink" href="#fn-pop-a" title="Permanent link">&para;</a></h4>
+<p>Attempt to remove and return the last element within <code>self</code>.<br />
+Raises <code>IndexError</code> if <code>self</code> is empty.  </p>
+<h4 id="fn-pushvalue-a-lista">fn push(value: A): List[A]<a class="headerlink" href="#fn-pushvalue-a-lista" title="Permanent link">&para;</a></h4>
+<p>Add <code>value</code> to the end of <code>self</code>.  </p>
+<h4 id="fn-rejectfun-functiona-boolean-lista">fn reject(fun: Function(A =&gt; Boolean)): List[A]<a class="headerlink" href="#fn-rejectfun-functiona-boolean-lista" title="Permanent link">&para;</a></h4>
+<p>This calls <code>fun</code> for each element within <code>self</code>. The result is a newly-made <code>List</code> holding each element where <code>fun</code> returns <code>false</code>.  </p>
+<h4 id="sta-fn-repeatcount-integer-value-a-lista">sta fn repeat(count: Integer, value: A): List[A]<a class="headerlink" href="#sta-fn-repeatcount-integer-value-a-lista" title="Permanent link">&para;</a></h4>
+<p>This creates a new <code>List</code> that contains <code>value</code> repeated <code>count</code> times.<br />
+Raises <code>ValueError</code> if <code>count</code> is less than 1.  </p>
+<h4 id="fn-selectfun-functiona-boolean-lista">fn select(fun: Function(A =&gt; Boolean)): List[A]<a class="headerlink" href="#fn-selectfun-functiona-boolean-lista" title="Permanent link">&para;</a></h4>
+<p>This calls <code>fun</code> for each element within <code>self</code>. The result is a newly-made <code>List</code> holding each element where <code>fun</code> returns <code>true</code>.  </p>
+<h4 id="fn-len-integer_2">fn len: Integer<a class="headerlink" href="#fn-len-integer_2" title="Permanent link">&para;</a></h4>
+<p>Returns the number of elements that are within <code>self</code>.  </p>
+<h4 id="fn-shift-a">fn shift: A<a class="headerlink" href="#fn-shift-a" title="Permanent link">&para;</a></h4>
+<p>This attempts to remove the last element from <code>self</code> and return it.<br />
+Raises <code>ValueError</code> if <code>self</code> is empty.  </p>
+<h4 id="fn-slicestart-integer-0-stop-integer-1-lista">fn slice(start: <em>Integer = 0, stop: </em>Integer = -1): List[A]<a class="headerlink" href="#fn-slicestart-integer-0-stop-integer-1-lista" title="Permanent link">&para;</a></h4>
+<p>Create a new <code>List</code> copying a section of <code>self</code> from <code>start</code> to <code>stop</code>.<br />
+If a negative index is given, it is treated as an offset from the end of <code>self</code>, with <code>-1</code> being considered the last element.<br />
+Raises <code>IndexError</code> if <code>start</code> or <code>stop</code> is out of range or the <code>start</code> is larger than the <code>stop</code>.  </p>
+<h4 id="fn-unshiftvalue-a-lista">fn unshift(value: A): List[A]<a class="headerlink" href="#fn-unshiftvalue-a-lista" title="Permanent link">&para;</a></h4>
+<p>Inserts value at the front of <code>self</code>, moving all other elements to the right.  </p>
+<h4 id="fn-zipothers-list1-listtuplea-1">fn zip(others: List[$1]...): List[Tuple[A, $1]]<a class="headerlink" href="#fn-zipothers-list1-listtuplea-1" title="Permanent link">&para;</a></h4>
+<p>This creates a <code>List</code> that contains a merger of the values within each of the elements in <code>others</code> and <code>self</code>.<br />
+The <code>$1</code> type is a special type that allows this method to work with any number of <code>List</code> values.  </p>
+<h3 id="class-string">Class String<a class="headerlink" href="#class-string" title="Permanent link">&para;</a></h3>
+<p>The <code>String</code> class provides a wrapper over a C <code>char *</code>. The <code>String</code> class is guaranteed to have a single <code>\0</code> terminator. Additionally, a <code>String</code> is guaranteed to always be valid utf-8.<br />
+The methods on the <code>String</code> class treat the underlying <code>String</code> as being immutable, and thus always create a new <code>String</code> instead of modifying the existing one.  </p>
+<h4 id="fn-char_atindex-integer-byte">fn char_at(index: Integer): Byte<a class="headerlink" href="#fn-char_atindex-integer-byte" title="Permanent link">&para;</a></h4>
+<p>Returns a characted at <code>index</code> in the <code>self</code>. If <code>index</code> is negative, then it is considered an offset from the end of the <code>self</code>.<br />
+Raises <code>IndexError</code> if <code>index</code> is not within <code>self</code>.  </p>
+<h4 id="fn-formatargs-1-string">fn format(args: $1...): String<a class="headerlink" href="#fn-formatargs-1-string" title="Permanent link">&para;</a></h4>
+<p>This creates a new <code>String</code> by processing self as a format. Format specifiers must be between braces (<code>{}</code>), and must be between <code>0</code> and <code>99</code>. Each format specifier is replaced with the according argument, with the first argument being at 0, the second at 1, and so on.<br />
+Raises <code>ValueError</code> if a format specifier is malformed or has too many digits.<br />
+Raises <code>IndexError</code> if the format specifier specifies an out-of-range argument.  </p>
+<h4 id="fn-ends_withend-string-boolean">fn ends_with(end: String): Boolean<a class="headerlink" href="#fn-ends_withend-string-boolean" title="Permanent link">&para;</a></h4>
+<p>Checks if <code>self</code> ends with <code>end</code>.  </p>
+<h4 id="fn-findneedle-string-start-integer-0-optioninteger">fn find(needle: String, start: *Integer = 0): Option[Integer]<a class="headerlink" href="#fn-findneedle-string-start-integer-0-optioninteger" title="Permanent link">&para;</a></h4>
+<p>Check for <code>needle</code> being within <code>self</code>. By default, this begins at the <code>start</code> of <code>self</code>. If <code>start</code> is non-zero, then the search begins <code>start</code> bytes away from the beginning of <code>self</code>. If <code>start</code> lies within the middle of a utf-8 codepoint, then <code>None</code> is returned.<br />
+If <code>needle</code> is found, the result is a <code>Some</code> holding the index.<br />
+Otherwise, this returns <code>None</code>.  </p>
+<h4 id="fn-is_alnum-boolean">fn is_alnum: Boolean<a class="headerlink" href="#fn-is_alnum-boolean" title="Permanent link">&para;</a></h4>
+<p>Return <code>true</code> if <code>self</code> has only alphanumeric(<code>[a-zA-Z0-9]+</code>) characters, <code>false</code> otherwise.  </p>
+<h4 id="fn-is_alpha-boolean">fn is_alpha: Boolean<a class="headerlink" href="#fn-is_alpha-boolean" title="Permanent link">&para;</a></h4>
+<p>Return <code>true</code> if <code>self</code> has only alphabetical(<code>[a-zA-Z]+</code>) characters, <code>false</code> otherwise.  </p>
+<h4 id="fn-is_digit-boolean">fn is_digit: Boolean<a class="headerlink" href="#fn-is_digit-boolean" title="Permanent link">&para;</a></h4>
+<p>Return <code>true</code> if <code>self</code> has only digit(<code>[0-9]+</code>) characters, <code>false</code> otherwise.  </p>
+<h4 id="fn-is_space-boolean">fn is_space: Boolean<a class="headerlink" href="#fn-is_space-boolean" title="Permanent link">&para;</a></h4>
+<p>Returns <code>true</code> if self has only space(<code>" \t\r\n"</code>) characters, <code>false</code> otherwise.  </p>
+<h4 id="fn-lower-string">fn lower: String<a class="headerlink" href="#fn-lower-string" title="Permanent link">&para;</a></h4>
+<p>Checks if any characters within <code>self</code> are within [<code>A-Z]</code>. If so, it creates a new <code>String</code> with <code>[A-Z]</code> replaced by <code>[a-z]</code>. Otherwise, <code>self</code> is returned.  </p>
+<h4 id="fn-lstripto_strip-string-string">fn lstrip(to_strip: String): String<a class="headerlink" href="#fn-lstripto_strip-string-string" title="Permanent link">&para;</a></h4>
+<p>This walks through <code>self</code> from left to right, stopping on the first utf-8 chunk that is not found within <code>to_strip</code>. The result is a newly-made copy of <code>self</code> without the elements within <code>to_strip</code> at the front.  </p>
+<h4 id="fn-to_i-integer_3">fn to_i: Integer<a class="headerlink" href="#fn-to_i-integer_3" title="Permanent link">&para;</a></h4>
+<p>Attempts to convert <code>self</code> into an <code>Integer</code>. <code>self</code> is parsed as a base-10 encoded value.<br />
+If the value is not a valid <code>Integer</code>, <code>ValueError</code> will raised. </p>
+<h4 id="fn-to_d-double_1">fn to_d: Double<a class="headerlink" href="#fn-to_d-double_1" title="Permanent link">&para;</a></h4>
+<p>Attempts to convert <code>self</code> into an <code>Double</code>. <code>self</code> is parsed as a base-10 encoded value.<br />
+If the value is not a valid <code>Double</code>, <code>ValueError</code> will raised.  </p>
+<h4 id="fn-replaceneedle-string-new-string-string">fn replace(needle: String, new: String): String`<a class="headerlink" href="#fn-replaceneedle-string-new-string-string" title="Permanent link">&para;</a></h4>
+<p>Create a new <code>String</code> consisting of every <code>needle</code> replaced with <code>new</code>.</p>
+<h4 id="fn-rstripto_strip-string-string">fn rstrip(to_strip: String): String<a class="headerlink" href="#fn-rstripto_strip-string-string" title="Permanent link">&para;</a></h4>
+<p>This walks through <code>self</code> from right to left, stopping on the first utf-8 chunk that is not found within <code>to_strip</code>. The result is a newly-made copy of self without the elements of <code>to_strip</code> at the end.  </p>
+<h4 id="fn-len-integer_3">fn len: Integer<a class="headerlink" href="#fn-len-integer_3" title="Permanent link">&para;</a></h4>
+<p>Return the number of bytes in <code>self</code>. This is equivalent to <code>ByteString.len</code>.  </p>
+<h4 id="fn-slicestart-integer-0-stop-integer-1-string">fn slice(start: <em>Integer = 0, stop: </em>Integer = -1): String<a class="headerlink" href="#fn-slicestart-integer-0-stop-integer-1-string" title="Permanent link">&para;</a></h4>
+<p>Create a new <code>String</code> copying a section of <code>self</code> from <code>start</code> to <code>stop</code>. This function works using byte indexes into the <code>String</code> value.<br />
+If a negative index is given, it is treated as an offset from the end of self, with <code>-1</code> being considered the last element.<br />
+Raises <code>IndexError</code> if either <code>start</code> or <code>stop</code> is out of range or if the <code>start</code> is larger than the <code>stop</code>.<br />
+Raises <code>ValueError</code> if the resulting slice would not be valid utf-8.  </p>
+<h4 id="fn-splitsplit_by-string-liststring">fn split(split_by: *String = " "): List[String]<a class="headerlink" href="#fn-splitsplit_by-string-liststring" title="Permanent link">&para;</a></h4>
+<p>This attempts to split <code>self</code> using <code>split_by</code>, with a default value of a single space.<br />
+Raises <code>ValueError</code> if <code>split_by</code> is empty.  </p>
+<h4 id="fn-starts_withwith-string-boolean">fn starts_with(with: String): Boolean<a class="headerlink" href="#fn-starts_withwith-string-boolean" title="Permanent link">&para;</a></h4>
+<p>Checks if <code>self</code> starts with <code>with</code>.  </p>
+<h4 id="fn-stripto_strip-string-string">fn strip(to_strip: String): String<a class="headerlink" href="#fn-stripto_strip-string-string" title="Permanent link">&para;</a></h4>
+<p>This walks through <code>self</code> from right to left, and then from left to right. The result of this is a newly-made <code>String</code> without any elements within <code>to_strip</code> at either end.  </p>
+<h4 id="fn-to_bs-bytestring">fn to_bs: ByteString<a class="headerlink" href="#fn-to_bs-bytestring" title="Permanent link">&para;</a></h4>
+<p>Produce a copy of <code>self</code> as a <code>ByteString</code>.  </p>
+<h4 id="fn-trim-string">fn trim: String<a class="headerlink" href="#fn-trim-string" title="Permanent link">&para;</a></h4>
+<p>Checks if <code>self</code> starts or ends with any of <code>" \t\r\n"</code>. If it does, then a new <code>String</code> is made with spaces removed from both sides. If it does not, then this returns <code>self</code>.  </p>
+<h4 id="fn-upper-string">fn upper: String<a class="headerlink" href="#fn-upper-string" title="Permanent link">&para;</a></h4>
+<p>Checks if any characters within <code>self</code> are within <code>[a-z]</code>. If so, it creates a new <code>String</code> with <code>[a-z]</code> replaced by <code>[A-Z]</code>. Otherwise, <code>self</code> is returned.  </p>
+<h3 id="class-tuple">Class Tuple<a class="headerlink" href="#class-tuple" title="Permanent link">&para;</a></h3>
+<p>The <code>Tuple</code> class provides a fixed-size container over a set of types. <code>Tuple</code> is ideal for situations where a variety of data is needed, but a class is too complex.<br />
+<code>Tuple</code> literals are created by <code>&lt;[value1, value2, ...]&gt;</code>. Member of the <code>Tuple</code> class can be accessed through subscripts. Unlike <code>List</code>, <code>Tuple</code> does not support negative indexes.  </p>
+<h3 id="enum-option-optiona-somea-none">Enum Option <code>Option[A] { Some(A), None}</code><a class="headerlink" href="#enum-option-optiona-somea-none" title="Permanent link">&para;</a></h3>
+<p>The <code>Option</code> type presents a way to hold either a value of <code>A</code>, or <code>None</code>, with <code>None</code> being valid for any <code>Option</code>. A common use for this is as a return type for functions that may fail, but have no meaningful error message.  </p>
+<h4 id="fn-andother-optionb-optionb">fn and(other: Option[B]): Option[B]<a class="headerlink" href="#fn-andother-optionb-optionb" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> is a <code>Some</code>, this returns <code>other</code>.<br />
+Otherwise, this returns <code>None</code>.  </p>
+<h4 id="fn-and_thenfun-functiona-optionb-optionb">fn and_then(fun: Function(A =&gt; Option[B])): Option[B]<a class="headerlink" href="#fn-and_thenfun-functiona-optionb-optionb" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> is a <code>Some</code>, this calls <code>fun</code> with the value within the <code>Some</code>. The result is the result of the <code>Option</code> returned by <code>fun</code>.<br />
+Otherwise, this returns <code>None</code>.  </p>
+<h4 id="fn-is_none-boolean">fn is_none: Boolean<a class="headerlink" href="#fn-is_none-boolean" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> is a <code>Some</code>, this returns <code>false</code>.<br />
+Otherwise, this returns <code>true</code>.  </p>
+<h4 id="fn-is_some-boolean">fn is_some: Boolean<a class="headerlink" href="#fn-is_some-boolean" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> is a <code>Some</code>, this returns <code>true</code>.<br />
+Otherwise, this returns <code>false</code>.  </p>
+<h4 id="fn-mapfun-functiona-b-optionb">fn map(fun: Function(A =&gt; B)): Option[B]<a class="headerlink" href="#fn-mapfun-functiona-b-optionb" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> is a <code>Some</code>, this returns a <code>Some</code> holding the result of <code>fun</code>.<br />
+Otherwise, this returns <code>None</code>.  </p>
+<h4 id="fn-oralternate-optiona-optiona">fn or(alternate: Option[A]): Option[A]<a class="headerlink" href="#fn-oralternate-optiona-optiona" title="Permanent link">&para;</a></h4>
+<p>If self is a <code>Some</code>, this returns <code>self</code>.<br />
+Otherwise, this returns <code>alternate</code>.    </p>
+<h4 id="fn-or_elsefun-function-optiona-optiona">fn or_else(fun: Function( =&gt; Option[A])): Option[A]<a class="headerlink" href="#fn-or_elsefun-function-optiona-optiona" title="Permanent link">&para;</a></h4>
+<p>If self is a <code>Some</code>, this returns <code>self</code>.<br />
+Otherwise, this returns the result of calling <code>fun</code>.  </p>
+<h4 id="fn-unwrap-a">fn unwrap: A<a class="headerlink" href="#fn-unwrap-a" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> is a <code>Some</code>, this returns the value contained within. <br />
+Raises <code>ValueError</code> if <code>self</code> is <code>None</code>.  </p>
+<h4 id="fn-unwrap_oralternate-a-a">fn unwrap_or(alternate: A): A<a class="headerlink" href="#fn-unwrap_oralternate-a-a" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> is a <code>Some</code>, this returns the value with <code>self</code>. <br />
+Otherwise, this returns <code>alternate</code>.  </p>
+<h4 id="fn-unwrap_or_elsefun-function-a-a">fn unwrap_or_else(fun: Function( =&gt; A)): A<a class="headerlink" href="#fn-unwrap_or_elsefun-function-a-a" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> is a <code>Some</code>, this returns the value with <code>self</code>.<br />
+Otherwise, this returns the result of calling <code>fun</code>.  </p>
+<h3 id="enum-result-resulta-b-failurea-successb">Enum Result <code>Result[A, B] { Failure(A), Success(B)}</code><a class="headerlink" href="#enum-result-resulta-b-failurea-successb" title="Permanent link">&para;</a></h3>
+<p><code>Result</code> is an enum that holds either a <code>Failure</code> or <code>Success</code>. This enum is for situations where the function that fails has an error message to deliver.  </p>
+<h4 id="fn-failure-optiona">fn failure: Option[A]<a class="headerlink" href="#fn-failure-optiona" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> contains a <code>Failure</code>, produces a <code>Some(A)</code>.  <br />
+If <code>self</code> contains a <code>Right</code>, produces <code>None</code>.  </p>
+<h4 id="fn-is_failure-boolean">fn is_failure: Boolean<a class="headerlink" href="#fn-is_failure-boolean" title="Permanent link">&para;</a></h4>
+<p>Return <code>true</code> if <code>self</code> contains a <code>Failure</code>, <code>false</code> otherwise.  </p>
+<h4 id="fn-is_success-boolean">fn is_success: Boolean<a class="headerlink" href="#fn-is_success-boolean" title="Permanent link">&para;</a></h4>
+<p>Return <code>true</code> if <code>self</code> contains a <code>Success</code>, <code>false</code> otherwise.  </p>
+<h4 id="fn-success-optionb">fn success: Option[B]<a class="headerlink" href="#fn-success-optionb" title="Permanent link">&para;</a></h4>
+<p>If <code>self</code> contains a <code>Failure</code>, produces a <code>None</code>.<br />
+If <code>self</code> contains a <code>Success</code>, produces <code>Right(B)</code>.  </p>
+<h3 id="function-sayln-saylnvalue-a">Function sayln <code>sayln(value: A)</code><a class="headerlink" href="#function-sayln-saylnvalue-a" title="Permanent link">&para;</a></h3>
+<p>Write <code>value</code> to <code>stdout</code>, plus a newline (<code>"\n"</code>).  </p>
+<h3 id="function-say-sayvalue-a">Function say <code>say(value: A)</code><a class="headerlink" href="#function-say-sayvalue-a" title="Permanent link">&para;</a></h3>
+<p>Write <code>value</code> to <code>stdout</code> (without a newline).   </p>
+<h3 id="function-input-inputprompt-string-bytestring">Function input <code>input(prompt: *String): ByteString</code><a class="headerlink" href="#function-input-inputprompt-string-bytestring" title="Permanent link">&para;</a></h3>
+<p>Write <code>value</code> to <code>stdout</code>, then read input from <code>stdin</code>.  </p>
+<h3 id="function-range-rangestart-integer-0-end-integer">Function range <code>range(start: *Integer = 0, end: Integer)</code><a class="headerlink" href="#function-range-rangestart-integer-0-end-integer" title="Permanent link">&para;</a></h3>
+<p>Build list contains all numbers from <code>start</code> to <code>end</code> (inclusive).  </p>
+<h3 id="function-calltrace-calltrace-liststring">Function calltrace <code>calltrace: List[String]</code><a class="headerlink" href="#function-calltrace-calltrace-liststring" title="Permanent link">&para;</a></h3>
+<p>Returns a <code>List</code> with one <code>String</code> for each function that is currently entered.  </p>
+<h3 id="variable-stdin-stdin-file">Variable stdin <code>stdin: File</code><a class="headerlink" href="#variable-stdin-stdin-file" title="Permanent link">&para;</a></h3>
+<p>Provides a wrapper around the <code>stdin</code>.  </p>
+<h3 id="variable-stderr-stderr-file">Variable stderr <code>stderr: File</code><a class="headerlink" href="#variable-stderr-stderr-file" title="Permanent link">&para;</a></h3>
+<p>Provides a wrapper around the <code>stderr</code>.  </p>
+<h3 id="variable-stdout-stdout-file">Variable stdout <code>stdout: File</code><a class="headerlink" href="#variable-stdout-stdout-file" title="Permanent link">&para;</a></h3>
+<p>Provides a wrapper around the <code>stdout</code>.</p>
+<h2 id="random">random<a class="headerlink" href="#random" title="Permanent link">&para;</a></h2>
+<p>The <code>random</code> package provides access to a pseudo-random number generation.  </p>
+<h3 id="class-random">Class Random<a class="headerlink" href="#class-random" title="Permanent link">&para;</a></h3>
+<p>The <code>Random</code> class provides access to the random number generator. Each instance is completely separate from all others.<br />
+The constructor for this class takes a seed. If the seed provided is 0 or less, then the current time is used instead.  </p>
+<h4 id="fn-seed-integer-0-random">fn <new>(seed: *Integer = 0): Random<a class="headerlink" href="#fn-seed-integer-0-random" title="Permanent link">&para;</a></h4>
+<h4 id="fn-betweenlower-integer-upper-integer-integer">fn between(lower: Integer, upper: Integer): Integer<a class="headerlink" href="#fn-betweenlower-integer-upper-integer-integer" title="Permanent link">&para;</a></h4>
+<p>Generate a random <code>Integer</code> value between <code>lower</code> and <code>upper</code>.<br />
+Raises <code>ValueError</code> is raised if the range is empty, or reversed.</p>
+<h2 id="sys">sys<a class="headerlink" href="#sys" title="Permanent link">&para;</a></h2>
+<h3 id="fn-listdirpath-string-liststring">fn listdir(path: String): List[String]<a class="headerlink" href="#fn-listdirpath-string-liststring" title="Permanent link">&para;</a></h3>
+<p>Returns list of files in <code>path</code>. <br />
+Raises IOError if <code>path</code> is not exists or accessible.  </p>
+<h3 id="fn-rmdirpath-string-boolean">fn rmdir(path: String): Boolean<a class="headerlink" href="#fn-rmdirpath-string-boolean" title="Permanent link">&para;</a></h3>
+<p>Removes a directory whose name is given by <code>path</code>. The directory shall be removed only if it is an empty directory.<br />
+Raises IOError if <code>path</code> is not exists or accessible, otherwise returns <code>true</code>.  </p>
+<h3 id="fn-removepath-string-boolean">fn remove(path: String): Boolean<a class="headerlink" href="#fn-removepath-string-boolean" title="Permanent link">&para;</a></h3>
+<p>Removes a file whose name is given by <code>path</code>. <br />
+Raises IOError if <code>path</code> is not exists or accessible, otherwise returns <code>true</code>.  </p>
+<h3 id="fn-mkdirpath-string-boolean">fn mkdir(path: String): Boolean<a class="headerlink" href="#fn-mkdirpath-string-boolean" title="Permanent link">&para;</a></h3>
+<p>Creates a file whose name is given by <code>path</code>. <br />
+Raises IOError if <code>path</code> is not a valid path name, otherwise returns <code>true</code>.   </p>
+<h3 id="fn-existspath-string-boolean">fn exists(path: String): Boolean<a class="headerlink" href="#fn-existspath-string-boolean" title="Permanent link">&para;</a></h3>
+<p>Returns <code>true</code>, if <code>path</code> is a existing file or directory, <code>false</code> otherwise.  </p>
+<h3 id="fn-is_dirpath-string-boolean">fn is_dir(path: String): Boolean<a class="headerlink" href="#fn-is_dirpath-string-boolean" title="Permanent link">&para;</a></h3>
+<p>Returns <code>true</code>, if <code>path</code> is a existing directory, <code>false</code> otherwise.  </p>
+<h3 id="fn-is_filepath-string-boolean">fn is_file(path: String): Boolean<a class="headerlink" href="#fn-is_filepath-string-boolean" title="Permanent link">&para;</a></h3>
+<p>Returns <code>true</code>, if <code>path</code> is a existing file, <code>false</code> otherwise.  </p>
+<h3 id="fn-exitexit_code-integer">fn exit(exit_code: *Integer)<a class="headerlink" href="#fn-exitexit_code-integer" title="Permanent link">&para;</a></h3>
+<p>Stop execution of the program and return code <code>exit_code</code>.  </p>
+<h3 id="fn-getenvname-string-optionstring">fn getenv(name: String): Option[String]<a class="headerlink" href="#fn-getenvname-string-optionstring" title="Permanent link">&para;</a></h3>
+<p>Search the environment for <code>name</code>, returning either a <code>Some</code> with the contents, or <code>None</code>.  </p>
+<h3 id="fn-setenvname-string-value-string-boolean">fn setenv(name: String, value: String): Boolean<a class="headerlink" href="#fn-setenvname-string-value-string-boolean" title="Permanent link">&para;</a></h3>
+<p>Set environment variable <code>name</code> to <code>value</code>, on success return <code>true</code>, <code>false</code> otherwise.  </p>
+<h3 id="fn-recursion_limit-integer">fn recursion_limit: Integer<a class="headerlink" href="#fn-recursion_limit-integer" title="Permanent link">&para;</a></h3>
+<p>Return the current recursion limit.   </p>
+<h3 id="fn-set_recursion_limitlimit-integer">fn set_recursion_limit(limit: Integer)<a class="headerlink" href="#fn-set_recursion_limitlimit-integer" title="Permanent link">&para;</a></h3>
+<p>Attempt to set <code>limit</code> as the maximum recursion limit.<br />
+Raises <code>ValueError</code> if <code>limit</code> is lower than the current recursion depth or an negative value.   </p>
+<h3 id="variable-argv-argv-liststring">Variable argv <code>argv: List[String]</code><a class="headerlink" href="#variable-argv-argv-liststring" title="Permanent link">&para;</a></h3>
+<p>This contains arguments sent to the program through the command-line. If interpreter was not invoked from the command-line then this is empty.  </p>
+<h2 id="time">time<a class="headerlink" href="#time" title="Permanent link">&para;</a></h2>
+<p>The <code>time</code> package provides access to basic time information on the system.   </p>
+<h3 id="class-time">Class Time<a class="headerlink" href="#class-time" title="Permanent link">&para;</a></h3>
+<p>Instances of this class represent a single point in time. This class also includes static methods to provide a few extra features.  </p>
+<h4 id="sta-fn-clock-double">sta fn clock: Double<a class="headerlink" href="#sta-fn-clock-double" title="Permanent link">&para;</a></h4>
+<p>Returns the number of seconds of CPU time the interpreter has used.  </p>
+<h4 id="sta-fn-now-time">sta fn now: Time<a class="headerlink" href="#sta-fn-now-time" title="Permanent link">&para;</a></h4>
+<p>Returns a <code>Time</code> instance representing the current system time.  </p>
+<h4 id="fn-to_sformat-string-y-m-d-hms-z-string">fn to_s(format: *String = "%Y-%m-%d %H:%M:%S %z"): String<a class="headerlink" href="#fn-to_sformat-string-y-m-d-hms-z-string" title="Permanent link">&para;</a></h4>
+<p>Return a <code>String</code> representation of a <code>Time</code> instance in <code>format</code> format.  </p>
+<h4 id="fn-since_epoch-integer">fn since_epoch: Integer<a class="headerlink" href="#fn-since_epoch-integer" title="Permanent link">&para;</a></h4>
+<p>Returns the value of <code>self</code> as a number of seconds since the epoch.    </p>
+<h2 id="hash">hash<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h2>
+<p>The <code>hash</code> provides access to hash-functions, e.g. <code>md5</code>.</p>
+<h3 id="fn-md5input-string-string">fn md5(input: String): String<a class="headerlink" href="#fn-md5input-string-string" title="Permanent link">&para;</a></h3>
+<p>Returns a md5 hash from <code>input</code>.  </p>
+<h3 id="fn-sha1input-string-string">fn sha1(input: String): String<a class="headerlink" href="#fn-sha1input-string-string" title="Permanent link">&para;</a></h3>
+<p>Returns a sha1 hash from <code>input</code>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

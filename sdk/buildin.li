@@ -1,0 +1,428 @@
+#[
+    This virtual file included by default
+]#
+
+var stdin: File = unit
+var stderr: File = unit
+var stdout: File = unit
+
+class Boolean {
+    fn to_i: Integer {
+        # Native ...
+    }
+
+    fn to_s: String {
+        # Native ...
+    }
+}
+
+class Byte {
+    fn to_i: Integer {
+        # Native ...
+    }
+
+    fn to_s: String {
+        # Native ...
+    }
+}
+
+class ByteString {
+    fn each_byte(fun: Function(Byte)) {
+        # Native ...
+    }
+
+    fn to_s: String {
+        # Native ...
+    }
+
+    fn len: Integer {
+        # Native ...
+    }
+
+    fn slice(start: Integer = 0, stop: Integer = -1): Integer {
+        # Native ...
+    }
+}
+
+class Exception(message: String) {
+    var @message: String = ""
+    var @traceback: List[String] = []
+}
+
+class DivisionByZeroError(msg: String) < Exception(msg) { #[...]# }
+
+class Coroutine[A, B] {
+    sta fn build(fun: Function(Coroutine[A, B])): Coroutine[A, B] {
+        # Native ...
+    }
+
+    sta fn build_with_value(fun: Function(Coroutine[A, B], C), value: C): Coroutine[A, B] {
+        # Native ...
+    }
+
+    fn is_done: Boolean {
+        # Native ...
+    }
+
+    fn is_failed: Boolean {
+        # Native ...
+    }
+
+    fn is_waiting: Boolean {
+        # Native ...
+    }
+
+    fn is_running: Boolean {
+        # Native ...
+    }
+
+    fn receive: B {
+        # Native ...
+    }
+
+    sta fn resume(self: Coroutine[A, Unit]): Option[A] {
+        # Native ...
+    }
+
+    fn resume_with(value: B): Option[A] {
+        # Native ...
+    }
+
+    fn yield(value: A) {
+        # Native ...
+    }
+}
+
+class Double {
+    fn to_i: Integer {
+        # Native ...
+    }
+}
+
+class File[A] {
+    fn close {
+        # Native ...
+    }
+
+    fn each_line(fun: Function(ByteString)) {
+        # Native ...
+    }
+
+    fn flush {
+        # Native ...
+    }
+
+    sta fn open(path: String, mode: String): File {
+        # Native ...
+    }
+
+    fn print(data: A) {
+        # Native ...
+    }
+
+    fn read(size: *Integer = -1): ByteString {
+        # Native ...
+    }
+
+    fn read_line: ByteString {
+        # Native ...
+    }
+
+    fn write(data: A) {
+        # Native ...
+    }
+}
+
+class Function { #[...]# }
+
+class Hash[A, B, C] {
+    fn clear {
+        # Native ...
+    }
+
+    fn delete(key: A) {
+        # Native ...
+    }
+
+    fn each_pair(fun: Function(A, B)) {
+        # Native ...
+    }
+
+    fn get(key: A): Option[B] {
+        # Native ...
+    }
+
+    fn has_key(key: A): Boolean {
+        # Native ...
+    }
+
+    fn keys: List[A] {
+        # Native ...
+    }
+
+    fn map_values(fun: Function(B => C)): Hash[A, C] {
+        # Native ...
+    }
+
+    fn merge(others: Hash[A, B]...): Hash[A, B] {
+        # Native ...
+    }
+
+    fn reject(fun: Function(A, B => Boolean)): Hash[A, B] {
+        # Native ...
+    }
+
+    fn select(fun: Function(A, B => Boolean)): Hash[A, B] {
+        # Native ...
+    }
+
+    fn len: Integer {
+        # Native ...
+    }
+}
+
+class List[A, B] {
+    fn append(list: List[A]): List[A] {
+        # Native ...
+    }
+
+    fn clear {
+        # Native ...
+    }
+
+    fn count(fun: Function(A => Boolean)): Integer {
+        # Native ...
+    }
+
+    fn delete_at(index: Integer) {
+        # Native ...
+    }
+
+    fn each(fun: Function(A)): List[A] {
+        # Native ...
+    }
+
+    fn each_index(fun: Function(Integer)): List[A] {
+        # Native ...
+    }
+
+    fn fold(start: A, fun: Function(A, A => A)): A {
+        # Native ...
+    }
+
+    sta fn fill(count: Integer, fun: Function(Integer => A)): List[A] {
+        # Native ...
+    }
+
+    fn get(index: Integer): Option[A] {
+        # Native ...
+    }
+
+    fn insert(index: Integer, value: A) {
+        # Native ...
+    }
+
+    fn join(separator: *String = ""): String {
+        # Native ...
+    }
+
+    fn map(fun: Function(A => B)): List[B] {
+        # Native ...
+    }
+
+    fn pop: A {
+        # Native ...
+    }
+
+    fn push(value: A): List[A] {
+        # Native ...
+    }
+
+    fn reject(fun: Function(A => Boolean)): List[A] {
+        # Native ...
+    }
+
+    sta fn repeat(count: Integer, value: A): List[A] {
+        # Native ...
+    }
+
+    fn select(fun: Function(A => Boolean)): List[A] {
+        # Native ...
+    }
+
+    fn len: Integer {
+        # Native ...
+    }
+
+    fn shift: A {
+        # Native ...
+    }
+
+    fn slice(start: Integer = 0, stop: Integer = -1): List[A] {
+        # Native ...
+    }
+
+    fn unshift(value: A): List[A] {
+        # Native ...
+    }
+
+    fn zip(others: List[$1]...): List[Tuple[A, $1]] {
+        # Native ...
+    }
+}
+
+class String {
+    fn char_at(index: Integer): Byte {
+        # Native ...
+    }
+
+    fn format(args: $1...): String {
+        # Native ...
+    }
+
+    fn ends_with(end: String): Boolean {
+        # Native ...
+    }
+
+    fn find(needle: String, start: *Integer = 0): Option[Integer] {
+        # Native ...
+    }
+
+    fn is_alnum: Boolean {
+        # Native ...
+    }
+
+    fn is_alpha: Boolean {
+        # Native ...
+    }
+
+    fn is_digit: Boolean {
+        # Native ...
+    }
+
+    fn is_space: Boolean {
+        # Native ...
+    }
+
+    fn lower: String {
+        # Native ...
+    }
+
+    fn lstrip(to_strip: String): String {
+        # Native ...
+    }
+
+    fn to_i: Integer {
+        # Native ...
+    }
+
+    fn to_d: Double {
+        # Native ...
+    }
+
+    fn replace(needle: String, new: String): String {
+        # Native ...
+    }
+
+    fn rstrip(to_strip: String): String {
+        # Native ...
+    }
+
+    fn split(split_by: *String = " "): List[String] {
+        # Native ...
+    }
+
+    fn starts_with(with: String): Boolean {
+        # Native ...
+    }
+
+    fn strip(to_strip: String): String {
+        # Native ...
+    }
+
+    fn to_bs: ByteString {
+        # Native ...
+    }
+
+    fn trim: String {
+        # Native ...
+    }
+
+    fn upper: String {
+        # Native ...
+    }
+}
+
+class Tuple { #[...]# }
+
+enum Option[A, B] {
+    Some(A),
+    None
+
+    fn and(other: Option[B]): Option[B] {
+        # Native ...
+    }
+
+    fn and_then(fun: Function(A => Option[B])): Option[B] {
+        # Native ...
+    }
+
+    fn is_none: Boolean {
+        # Native ...
+    }
+
+    fn is_some: Boolean {
+        # Native ...
+    }
+
+    fn map(fun: Function(A => B)): Option[B] {
+        # Native ...
+    }
+
+    fn or(alternate: Option[A]): Option[A] {
+        # Native ...
+    }
+
+    fn or_else(fun: Function( => Option[A])): Option[A] {
+        # Native ...
+    }
+
+    fn unwrap: A {
+        # Native ...
+    }
+
+    fn unwrap_or(alternate: A): A {
+        # Native ...
+    }
+
+    fn unwrap_or_else(fun: Function( => A)): A {
+        # Native ...
+    }
+}
+
+Result[A, B] {
+    Failure(A),
+    Success(B)
+
+    fn failure: Option[A] {
+        # Native ...
+    }
+
+    fn is_failure: Boolean {
+        # Native ...
+    }
+
+    fn is_success: Boolean {
+        # Native ...
+    }
+
+    fn success: Option[B] {
+        # Native ...
+    }
+}
+
+future sayln(A) { ... }
+future say(A) { ... }
+future input(*String): ByteString { ... }
+future range(*Integer, Integer) { ... }
+future calltrace: List[String] { ... }

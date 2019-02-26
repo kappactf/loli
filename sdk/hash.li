@@ -1,0 +1,6 @@
+#[
+    Use `import hash`, to import this virtual file
+]#
+
+future fn md5(String): String { ... }
+future fn sha1(String): String { ... }

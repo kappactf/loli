@@ -1,0 +1,21 @@
+#[
+    Use `import time`, to import this virtual file
+]#
+
+class Time {
+    sta fn clock: Double {
+        # Native ...
+    }
+
+    sta fn now: Time {
+        # Native ...
+    }
+
+    fn to_s(format: *String = "%Y-%m-%d %H:%M:%S %z"): String {
+        # Native ...
+    }
+
+    fn since_epoch: Integer {
+        # Native ...
+    }
+}

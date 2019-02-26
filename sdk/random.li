@@ -1,0 +1,9 @@
+#[
+    Use `import random`, to import this virtual file
+]#
+
+class Random(seed: *Integer = 0) {
+    fn between(lower: Integer, upper: Integer): Integer {
+        # Native ...
+    }
+}

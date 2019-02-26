@@ -1,0 +1,34 @@
+#[
+    Use `import math`, to import this virtual file
+]#
+
+var huge: Double = 0.0
+var infinity: Double = 0.0
+var nan: Double = 0.0
+var pi: Double = 0.0
+
+future fn abs(Integer): Integer { ... }
+future fn acos(Double): Double { ... }
+future fn asin(Double): Double { ... }
+future fn atan(Double): Double { ... }
+future fn ceil(Double): Double { ... }
+future fn cos(Double): Double { ... }
+future fn cosh(Double): Double { ... }
+future fn exp(Double): Double { ... }
+future fn fabs(Double): Double { ... }
+future fn floor(Double): Double { ... }
+future fn fmod(Double, Double): Double { ... }
+future fn is_infinity(Double): Boolean { ... }
+future fn is_nan(Double): Boolean { ... }
+future fn ldexp(Double, Integer): Double { ... }
+future fn log(Double): Double { ... }
+future fn log10(Double): Double { ... }
+future fn modf(Double): Tuple[Double,Double] { ... }
+future fn pow(Double, Double): Double { ... }
+future fn sin(Double): Double { ... }
+future fn sinh(Double): Double { ... }
+future fn sqrt(Double): Double { ... }
+future fn tan(Double): Double { ... }
+future fn tanh(Double): Double { ... }
+future fn to_deg(Double): Double { ... }
+future fn to_rad(Double): Double { ... }
